@@ -19,6 +19,7 @@ export default function App() {
   // Get page metadata for SEO
   const getPageMeta = () => {
     const baseMeta = {
+      title: 'Ceylon Golden Spices',
       siteName: 'Ceylon Golden Spices',
       domain: 'ceylongoldenspices.com',
       description: 'Premium Ceylon spices exporter from Sri Lanka. Authentic Ceylon cinnamon, black pepper, cloves, cardamom, and more. B2B spice supplier for international markets.',
@@ -61,20 +62,20 @@ export default function App() {
         <title>{pageMeta.title}</title>
         <meta name="description" content={pageMeta.description} />
         <meta name="keywords" content={pageMeta.keywords} />
-        
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.${pageMeta.domain}/`} />
         <meta property="og:title" content={pageMeta.title} />
         <meta property="og:description" content={pageMeta.description} />
         <meta property="og:site_name" content={pageMeta.siteName} />
-        
+
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={`https://www.${pageMeta.domain}/`} />
         <meta property="twitter:title" content={pageMeta.title} />
         <meta property="twitter:description" content={pageMeta.description} />
-        
+
         {/* Additional SEO */}
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
