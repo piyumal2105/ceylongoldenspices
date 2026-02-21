@@ -13,6 +13,7 @@ import Image07 from "../components/assets/Home/image07.jpg";
 import Image08 from "../components/assets/Home/image08.jpg";
 import Image09 from "../components/assets/Home/image09.jpg";
 import Image10 from "../components/assets/Home/image10.jpg";
+import Image11 from "../components/assets/Home/image11.png";
 
 import Video01 from "../components/assets/Home/video01.mp4";
 import Video02 from "../components/assets/Home/video02.mp4";
