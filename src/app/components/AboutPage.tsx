@@ -46,6 +46,44 @@ export function AboutPage({ onNavigate }) {
     }
   ];
 
+  const missionPoints = [
+    {
+      number: '01',
+      title: 'Deliver Superior Quality',
+      description: 'Produce and export high-quality, value-added agricultural products that comply with international food safety and export standards.'
+    },
+    {
+      number: '02',
+      title: 'Add Value at Source',
+      description: 'Transform raw Sri Lankan spices and agricultural produce into premium, processed, hygienically packed products that meet global retail and bulk market requirements.'
+    },
+    {
+      number: '03',
+      title: 'Ensure Food Safety & Compliance',
+      description: 'Maintain strict quality control, hygienic processing environments, and internationally accepted food safety practices to ensure consistency and customer confidence.'
+    },
+    {
+      number: '04',
+      title: 'Promote Sustainable Agriculture',
+      description: 'Support local farmers, encourage responsible sourcing, and promote environmentally sustainable practices throughout our supply chain.'
+    },
+    {
+      number: '05',
+      title: 'Build Long-Term Global Partnerships',
+      description: 'Develop transparent, reliable, and mutually beneficial relationships with international buyers, distributors, and retail partners.'
+    },
+    {
+      number: '06',
+      title: 'Innovate for Global Markets',
+      description: 'Continuously improve product development, packaging design, and branding strategies to compete effectively in European, Middle Eastern, African, Asian, and Australian markets.'
+    },
+    {
+      number: '07',
+      title: 'Represent Sri Lanka with Pride',
+      description: 'Promote Sri Lanka as a trusted global source of premium spices, herbal products, teas, dehydrated fruits, and cashew products.'
+    }
+  ];
+
   const exportCapabilities = [
     {
       stage: 'Sourcing',
@@ -180,62 +218,100 @@ export function AboutPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* Mission & Vision — Fully Updated */}
       <section className="py-16 md:py-20 bg-[#FFF8E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Mission Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600" alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/0 group-hover:from-[#D4AF37]/5 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
-              <div className="relative z-10">
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#D4AF37] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg transition-transform duration-300">
-                  <Target className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                </div>
-                <h3 className="text-2xl md:text-3xl mb-4 text-[#7B3F00] group-hover:text-[#5C2E00] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  Our Mission
-                </h3>
-                <p className="text-gray-700 leading-relaxed text-justify group-hover:text-gray-800 transition-colors duration-300">
-                  To deliver authentic Ceylon spices of the highest quality to global markets,
-                  preserving traditional methods while embracing modern standards. We are committed
-                  to building lasting partnerships based on trust, quality, and mutual growth.
-                </p>
-              </div>
-            </motion.div>
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl md:text-5xl mb-4 text-[#7B3F00]" style={{ fontFamily: 'Playfair Display, serif' }}>
+              Mission & Vision
+            </h2>
+            <p className="text-lg text-gray-600">The purpose and direction that drive everything we do</p>
+          </div>
 
-            {/* Vision Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group relative bg-white rounded-2xl p-6 md:p-8 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-            >
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1649853761620-c6588c980545?w=600" alt="" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/0 group-hover:from-[#D4AF37]/5 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
-              <div className="relative z-10">
-                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#D4AF37] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-lg transition-transform duration-300">
+          {/* Vision Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl transition-all duration-300 overflow-hidden mb-8"
+          >
+            {/* Decorative background image on hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1649853761620-c6588c980545?w=600" alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/0 group-hover:from-[#D4AF37]/5 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-lg transition-transform duration-300">
                   <Globe className="w-7 h-7 md:w-8 md:h-8 text-white" />
                 </div>
-                <h3 className="text-2xl md:text-3xl mb-4 text-[#7B3F00] group-hover:text-[#5C2E00] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
+                <h3 className="text-2xl md:text-3xl text-[#7B3F00] group-hover:text-[#5C2E00] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
                   Our Vision
                 </h3>
-                <p className="text-gray-700 leading-relaxed text-justify group-hover:text-gray-800 transition-colors duration-300">
-                  To become the world's most trusted Ceylon spice brand, recognized for unwavering
-                  quality, authenticity, and sustainable practices. We envision a future where every
-                  Ceylon Golden Spices product represents the pinnacle of Ceylon's spice heritage.
-                </p>
               </div>
-            </motion.div>
-          </div>
+              <p className="text-gray-700 leading-relaxed text-justify text-base md:text-lg mb-4">
+                To become a globally trusted Sri Lankan export brand, recognized for delivering premium value-added
+                spices, dehydrated fruits, teas, herbal products, and cashew items — setting international standards
+                in quality, authenticity, sustainability, and innovation.
+              </p>
+              <p className="text-gray-700 leading-relaxed text-justify text-base md:text-lg">
+                We envision bringing the true taste, purity, and natural richness of Sri Lanka to global markets
+                while building a brand that represents excellence, reliability, and long-term partnerships.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Mission Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl transition-all duration-300 overflow-hidden"
+          >
+            {/* Decorative background image on hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600" alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/0 group-hover:from-[#D4AF37]/5 group-hover:to-transparent transition-all duration-500 rounded-2xl"></div>
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 md:w-16 md:h-16 bg-[#D4AF37] rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:shadow-lg transition-transform duration-300">
+                  <Target className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-3xl text-[#7B3F00] group-hover:text-[#5C2E00] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
+                    Our Mission
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-1">At Golden Spices – A Brand of Buddhi Product, our mission is to:</p>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                {missionPoints.map((point, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.07 }}
+                    viewport={{ once: true }}
+                    className="flex gap-3 bg-[#FFF8E7] rounded-xl p-4 hover:bg-[#FFF0CC] transition-colors duration-200"
+                  >
+                    <span className="text-2xl font-bold text-[#D4AF37] leading-none flex-shrink-0 mt-0.5" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      {point.number}
+                    </span>
+                    <div>
+                      <h4 className="font-semibold text-[#7B3F00] text-sm mb-1">{point.title}</h4>
+                      <p className="text-gray-600 text-xs leading-relaxed text-justify">{point.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
