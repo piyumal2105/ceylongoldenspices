@@ -42,11 +42,12 @@ export function CookiePolicyPage({ onNavigate }: CookiePolicyPageProps) {
 
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-b from-white to-[#FFF8E7]">
+      <br />
       {/* Breadcrumb */}
       <div className="bg-[#0A2647] py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-300">
-            <button 
+            <button
               onClick={() => {
                 onNavigate('home');
                 scrollToTop();
@@ -99,7 +100,7 @@ export function CookiePolicyPage({ onNavigate }: CookiePolicyPageProps) {
             <h2 className="text-2xl font-bold text-[#7B3F00] mb-6 flex items-center gap-2">
               <span className="text-[#D4AF37]">2.</span> Types of Cookies We Use
             </h2>
-            
+
             <div className="space-y-6">
               {cookieTypes.map((type, index) => {
                 const IconComponent = type.icon;
@@ -184,7 +185,7 @@ export function CookiePolicyPage({ onNavigate }: CookiePolicyPageProps) {
             <p className="text-gray-700 leading-relaxed text-justify mb-4">
               You have the right to decide whether to accept or reject cookies. You can manage your cookie preferences through:
             </p>
-            
+
             <div className="bg-[#FFF8E7] rounded-lg p-6 mb-4">
               <h3 className="text-lg font-bold text-[#7B3F00] mb-3">Browser Settings</h3>
               <p className="text-sm text-gray-700 mb-3 text-justify">

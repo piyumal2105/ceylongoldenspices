@@ -11,11 +11,12 @@ export function PrivacyPolicyPage({ onNavigate }: PrivacyPolicyPageProps) {
 
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-b from-white to-[#FFF8E7]">
+      <br />
       {/* Breadcrumb */}
       <div className="bg-[#0A2647] py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-sm text-gray-300">
-            <button 
+            <button
               onClick={() => {
                 onNavigate('home');
                 scrollToTop();
