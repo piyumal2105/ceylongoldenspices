@@ -2,7 +2,7 @@ import { motion, useInView } from 'motion/react';
 import { ChevronDown, Leaf, Award, Globe, Package, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
-//Images imports
+// Images imports
 import Image01 from "../components/assets/Home/image01.jpg";
 import Image02 from "../components/assets/Home/image02.jpg";
 import Image03 from "../components/assets/Home/image03.jpg";
@@ -14,9 +14,7 @@ import Image08 from "../components/assets/Home/image08.jpg";
 import Image09 from "../components/assets/Home/image09.jpg";
 import Image10 from "../components/assets/Home/image10.jpg";
 import Image11 from "../components/assets/Home/image11.png";
-
-import Video01 from "../components/assets/Home/video01.mp4";
-import Video02 from "../components/assets/Home/video02.mp4";
+import Image12 from "../components/assets/Home/image12.jpg"
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -24,7 +22,7 @@ interface HomePageProps {
 interface CounterProps {
   target: number;
   suffix?: string;
-  duration?: number; // ms
+  duration?: number;
 }
 
 function AnimatedCounter({ target, suffix = '', duration = 2000 }: CounterProps) {
@@ -41,7 +39,6 @@ function AnimatedCounter({ target, suffix = '', duration = 2000 }: CounterProps)
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      // Ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * (target - startValue) + startValue));
       if (progress < 1) requestAnimationFrame(step);
@@ -57,6 +54,7 @@ function AnimatedCounter({ target, suffix = '', duration = 2000 }: CounterProps)
     </div>
   );
 }
+
 const STATS = [
   { value: 25, suffix: '+', label: 'Years Experience' },
   { value: 50, suffix: '+', label: 'Countries Served' },
@@ -142,59 +140,42 @@ export function HomePage({ onNavigate }: HomePageProps) {
     }
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
-  };
-
-  // Auto-play carousel
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [currentSlide]);
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+
+      {/* ── Hero Section ── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
+        {/* Background image */}
         <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1640220023829-ee908684d565?w=1920"
-          >
-            {/* Replace src with your imported video or URL */}
-            <source src={Video01} type="video/mp4" />
-
-            {/* Fallback if browser can't play video */}
-            <img
-              src="https://images.unsplash.com/photo-1640220023829-ee908684d565?w=1920"
-              alt="Spice plantation"
-              className="w-full h-full object-cover"
-            />
-          </video>
-
-          {/* Overlay — unchanged */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
+          <img
+            src={Image12}
+            alt="Authentic Ceylon spices — golden heritage of Sri Lanka"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/65" />
         </div>
 
+        {/* Hero text */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl mb-4 sm:mb-6 leading-tight"
+              style={{ fontFamily: 'Playfair Display, serif' }}
+            >
               Ceylon Golden Spices
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3 text-[#D4AF37]">
@@ -220,6 +201,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </motion.div>
         </div>
 
+        {/* Scroll cue */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
@@ -381,8 +363,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${currentSlide === index ? 'bg-[#D4AF37] w-6 sm:w-8' : 'bg-white/60 hover:bg-white/80'
-                      }`}
+                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${currentSlide === index ? 'bg-[#D4AF37] w-6 sm:w-8' : 'bg-white/60 hover:bg-white/80'}`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -394,8 +375,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden transition-all ${currentSlide === index ? 'ring-4 ring-[#D4AF37] scale-105' : 'opacity-60 hover:opacity-100'
-                    }`}
+                  className={`relative h-16 sm:h-20 md:h-24 rounded-lg overflow-hidden transition-all ${currentSlide === index ? 'ring-4 ring-[#D4AF37] scale-105' : 'opacity-60 hover:opacity-100'}`}
                 >
                   <img
                     src={typeof slide.image === 'string' ? slide.image : String(slide.image.src)}
@@ -458,7 +438,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Quality Promise Banner — Animated Counters */}
+      {/* Quality Promise Banner */}
       <section className="py-10 sm:py-12 bg-gradient-to-r from-[#D4AF37] to-[#C09F2F] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -474,11 +454,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   transition={{ delay: index * 0.15, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <AnimatedCounter
-                    target={stat.value}
-                    suffix={stat.suffix}
-                    duration={2000}
-                  />
+                  <AnimatedCounter target={stat.value} suffix={stat.suffix} duration={2000} />
                   <div className="text-xs sm:text-sm">{stat.label}</div>
                 </motion.div>
               ))}

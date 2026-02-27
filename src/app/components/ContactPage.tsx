@@ -143,38 +143,25 @@ const SpicePattern = () => (
   >
     <defs>
       <pattern id="spice-pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
-        {/* Cinnamon stick */}
         <rect x="10" y="15" width="4" height="22" rx="2" fill="currentColor" transform="rotate(-30 12 26)" />
         <rect x="16" y="18" width="4" height="22" rx="2" fill="currentColor" transform="rotate(-30 18 29)" />
-        {/* Peppercorn cluster */}
         <circle cx="70" cy="20" r="4" fill="currentColor" />
         <circle cx="78" cy="16" r="3" fill="currentColor" />
         <circle cx="76" cy="26" r="3.5" fill="currentColor" />
-        {/* Clove */}
         <ellipse cx="40" cy="70" rx="3" ry="8" fill="currentColor" transform="rotate(20 40 70)" />
         <circle cx="41" cy="62" r="4" fill="currentColor" />
-        {/* Cardamom pod */}
         <ellipse cx="100" cy="60" rx="5" ry="9" fill="currentColor" />
         <line x1="100" y1="51" x2="100" y2="69" stroke="white" strokeWidth="1" />
         <line x1="96" y1="55" x2="104" y2="55" stroke="white" strokeWidth="0.8" />
         <line x1="96" y1="60" x2="104" y2="60" stroke="white" strokeWidth="0.8" />
         <line x1="96" y1="65" x2="104" y2="65" stroke="white" strokeWidth="0.8" />
-        {/* Star anise */}
         <g transform="translate(30, 95)">
           {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
-            <ellipse
-              key={i}
-              cx="0" cy="-7"
-              rx="2" ry="5"
-              fill="currentColor"
-              transform={`rotate(${deg})`}
-            />
+            <ellipse key={i} cx="0" cy="-7" rx="2" ry="5" fill="currentColor" transform={`rotate(${deg})`} />
           ))}
           <circle cx="0" cy="0" r="3" fill="currentColor" />
         </g>
-        {/* Leaf */}
         <path d="M85 90 Q95 80 105 90 Q95 100 85 90Z" fill="currentColor" />
-        <line x1="95" y1="90" x2="95" y2="90" stroke="white" strokeWidth="0.5" />
       </pattern>
     </defs>
     <rect width="100%" height="100%" fill="url(#spice-pattern)" />
@@ -262,19 +249,17 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
     }));
   };
 
+  // ── Updated WhatsApp number: 0715655855 ──
   const handleWhatsAppClick = () => {
-    const url = `https://wa.me/94714893350?text=${encodeURIComponent(
+    const url = `https://wa.me/94715655855?text=${encodeURIComponent(
       'Hello Ceylon Golden Spices! I would like to inquire about your premium products.'
     )}`;
     window.open(url, '_blank');
   };
 
-  // Field component helpers
   const FieldWrapper = ({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) => (
     <div>
-      <label className="block text-sm font-semibold text-[#7B3F00] mb-1.5">
-        {label}
-      </label>
+      <label className="block text-sm font-semibold text-[#7B3F00] mb-1.5">{label}</label>
       {children}
       {error && (
         <p className="mt-1 text-xs text-red-600 flex items-center gap-1">
@@ -389,10 +374,9 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                     </div>
                   </FieldWrapper>
 
-                  {/* Phone — split country code + number */}
+                  {/* Phone */}
                   <FieldWrapper label="Phone Number *" error={errors.phone}>
                     <div className="flex gap-2 sm:gap-3">
-                      {/* Country code selector */}
                       <div className="relative shrink-0">
                         <select
                           name="countryCode"
@@ -410,8 +394,6 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                         </select>
                         <ChevronDown className="w-3.5 h-3.5 text-gray-500 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
                       </div>
-
-                      {/* Number input */}
                       <div className="relative flex-1">
                         <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                         <input
@@ -470,7 +452,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                     </div>
                   </FieldWrapper>
 
-                  {/* Specific Products — shown when category is a real category */}
+                  {/* Specific Products */}
                   <AnimatePresence>
                     {selectedCategoryData && (
                       <motion.div
@@ -494,8 +476,8 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                                 type="button"
                                 onClick={() => toggleProduct(product)}
                                 className={`flex items-center gap-2.5 p-3 rounded-xl border-2 text-left text-sm transition-all ${checked
-                                  ? 'border-[#D4AF37] bg-amber-50 text-[#7B3F00] font-medium'
-                                  : 'border-gray-200 hover:border-[#D4AF37]/60 text-gray-700'
+                                    ? 'border-[#D4AF37] bg-amber-50 text-[#7B3F00] font-medium'
+                                    : 'border-gray-200 hover:border-[#D4AF37]/60 text-gray-700'
                                   }`}
                                 aria-pressed={checked}
                               >
@@ -512,7 +494,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                     )}
                   </AnimatePresence>
 
-                  {/* Estimated Quantity — dynamic based on category */}
+                  {/* Estimated Quantity */}
                   <AnimatePresence>
                     {formData.productCategory && (
                       <motion.div
@@ -529,7 +511,6 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
 
                         {formData.productCategory !== 'multiple' && packageSizes.length > 0 ? (
                           <div className="grid grid-cols-2 gap-3">
-                            {/* Package size */}
                             <div className="relative">
                               <select
                                 name="packageSize"
@@ -544,7 +525,6 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                               </select>
                               <ChevronDown className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                             </div>
-                            {/* Quantity number */}
                             <input
                               type="number"
                               name="quantityValue"
@@ -593,7 +573,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                     Submit Export Inquiry
                   </button>
 
-                  {/* Success message */}
+                  {/* Success */}
                   <AnimatePresence>
                     {submitted && (
                       <motion.div
@@ -613,7 +593,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
             {/* ─── Right Column ─── */}
             <div className="lg:col-span-2 flex flex-col gap-6">
 
-              {/* WhatsApp */}
+              {/* WhatsApp — updated number */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -632,9 +612,16 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                       <p className="text-white/80 text-xs">Get instant responses</p>
                     </div>
                   </div>
-                  <p className="text-sm text-white/90 mb-4 text-justify leading-relaxed">
+                  <p className="text-sm text-white/90 mb-3 text-justify leading-relaxed">
                     Prefer WhatsApp? Chat directly with our export team for quick inquiries about products, pricing, and availability.
                   </p>
+                  {/* Hotline display */}
+                  <div className="flex items-center gap-2 mb-4 bg-white/15 rounded-xl px-3 py-2">
+                    <svg className="w-4 h-4 shrink-0" fill="white" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                    <span className="text-sm font-bold tracking-wide">Hotline: +94 71 565 5855</span>
+                  </div>
                   <button
                     onClick={handleWhatsAppClick}
                     className="w-full bg-white hover:bg-gray-50 active:scale-95 text-[#25D366] py-3 rounded-2xl font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2"
@@ -647,7 +634,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                 </div>
               </motion.div>
 
-              {/* Company Details */}
+              {/* Contact Information — updated address */}
               <motion.div
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -662,29 +649,18 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                 </h3>
 
                 <div className="space-y-5 text-sm">
-                  {/* Head Office */}
-                  <div className="flex gap-3">
-                    <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
-                      <Building className="w-4 h-4 text-[#D4AF37]" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Head Office</p>
-                      <p className="font-semibold text-gray-800">Ceylon Golden Spices</p>
-                      <p className="text-gray-600">Imperial Spices (Pvt) Ltd</p>
-                      <p className="text-gray-600">121 A, Biyagama Road</p>
-                      <p className="text-gray-600">Kelaniya, Sri Lanka</p>
-                    </div>
-                  </div>
 
-                  {/* Factory */}
+                  {/* Address */}
                   <div className="flex gap-3">
                     <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
                       <Building className="w-4 h-4 text-[#D4AF37]" />
                     </div>
                     <div>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Factory</p>
-                      <p className="text-gray-600">151, Biyagama Road</p>
-                      <p className="text-gray-600">Kelaniya, Sri Lanka</p>
+                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Address</p>
+                      <p className="font-semibold text-gray-800">Buddhi Product</p>
+                      <p className="text-gray-500 text-xs italic mb-1">Pure Ceylon Excellence</p>
+                      <p className="text-gray-600">392/A, Jayamawatha, Andiambelame,</p>
+                      <p className="text-gray-600">Sri Lanka. P.O.C. 11558</p>
                     </div>
                   </div>
 
@@ -697,27 +673,57 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                     </div>
                     <div>
                       <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Email</p>
-                      {['jayanthak@impratea.lk', 'imperialspices@imperialspices.lk', 'sales@imperialspices.lk'].map(e => (
-                        <a key={e} href={`mailto:${e}`} className="block text-[#D4AF37] hover:text-[#B8860B] underline underline-offset-2 transition-colors">
-                          {e}
-                        </a>
-                      ))}
+                      <a href="mailto:info@ceylongoldenspices.com" className="block text-[#D4AF37] hover:text-[#B8860B] underline underline-offset-2 transition-colors">
+                        info@ceylongoldenspices.com
+                      </a>
                     </div>
                   </div>
 
-                  {/* Phone */}
+                  {/* Phone — updated hotline */}
                   <div className="flex gap-3">
                     <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
                       <Phone className="w-4 h-4 text-[#D4AF37]" />
                     </div>
                     <div>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Phone</p>
-                      <a href="tel:+94112904000" className="block text-[#D4AF37] hover:text-[#B8860B] transition-colors">+94 11 290 4000</a>
-                      <a href="tel:+94112904034" className="block text-[#D4AF37] hover:text-[#B8860B] transition-colors">+94 11 290 4034</a>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mt-2 mb-1">Mobile</p>
-                      <a href="tel:+94714893350" className="block text-[#D4AF37] hover:text-[#B8860B] transition-colors">+94 71 489 3350</a>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mt-2 mb-1">Fax</p>
-                      <p className="text-gray-600">+94 11 290 9988</p>
+                      {/* Hotline — WhatsApp */}
+                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Hotline</p>
+                      <a
+                        href="https://wa.me/94715655855"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#B8860B] transition-colors"
+                      >
+                        +94 71 565 5855
+                        <span className="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded-full font-semibold">
+                          WhatsApp
+                        </span>
+                      </a>
+
+                      {/* Secondary number from card */}
+                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mt-2 mb-1">Phone</p>
+                      <a href="tel:+94704342820" className="block text-[#D4AF37] hover:text-[#B8860B] transition-colors">
+                        +94 70 434 2820
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Facebook */}
+                  <div className="flex gap-3">
+                    <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-[#D4AF37]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Facebook</p>
+                      <a
+                        href="https://www.facebook.com/profile.php?id=100090809895923"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#D4AF37] hover:text-[#B8860B] underline underline-offset-2 transition-colors break-all"
+                      >
+                        Ceylon Golden Spices
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -752,6 +758,7 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                   </div>
                 </div>
               </motion.div>
+
             </div>
           </div>
         </div>
