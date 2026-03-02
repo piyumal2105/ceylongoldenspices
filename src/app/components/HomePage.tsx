@@ -14,7 +14,8 @@ import Image08 from "../components/assets/Home/image08.jpg";
 import Image09 from "../components/assets/Home/image09.jpg";
 import Image10 from "../components/assets/Home/image10.jpg";
 import Image11 from "../components/assets/Home/image11.png";
-import Image12 from "../components/assets/Home/image12.jpg"
+import Image12 from "../components/assets/Home/image12.jpg";
+import Image13 from "../components/assets/Home/image13.png";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
