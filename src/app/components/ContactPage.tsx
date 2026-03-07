@@ -239,30 +239,68 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
     }));
   };
 
+  // ── CORRECTED: WhatsApp number is +94 70 434 2820 ──
   const handleWhatsAppClick = () => {
-    window.open(`https://wa.me/94715655855?text=${encodeURIComponent('Hello Ceylon Golden Spices! I would like to inquire about your premium products.')}`, '_blank');
+    window.open(`https://wa.me/94704342820?text=${encodeURIComponent('Hello Ceylon Golden Spices! I would like to inquire about your premium products.')}`, '_blank');
   };
-
-
-
-
 
   return (
     <div className="min-h-screen pt-20 font-sans">
-      {/* Hero */}
+
+      {/* ── Hero ── */}
       <section className="relative h-[52vh] min-h-[320px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&auto=format&fit=crop" alt="Premium Ceylon spices" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-[#7B3F00]/50" />
+          <img
+            src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1920&auto=format&fit=crop"
+            alt="Premium Ceylon spices"
+            className="w-full h-full object-cover"
+          />
+          {/* Darker overlay so text is always readable */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/70 to-[#4a2500]/75" />
         </div>
-        <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-[#D4AF37] text-sm uppercase tracking-widest mb-3 font-medium">ceylongoldenspices.com</motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} style={{ fontFamily: 'Georgia,"Times New Roman",serif' }} className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">Start Your Ceylon Spice Journey</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} className="text-xl text-[#D4AF37] font-light">Connect with Our Export Team</motion.p>
+
+        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
+          {/* Website label — bright gold with letter-spacing + subtle backdrop */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="inline-block bg-[#D4AF37]/20 border border-[#D4AF37]/60 backdrop-blur-sm rounded-full px-5 py-1.5 text-[#FFD966] text-xs sm:text-sm uppercase tracking-[0.25em] mb-5 font-semibold shadow-lg"
+          >
+            ceylongoldenspices.com
+          </motion.p>
+
+          {/* Main heading — pure white, high contrast */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            style={{ fontFamily: 'Georgia,"Times New Roman",serif', textShadow: '0 2px 16px rgba(0,0,0,0.7)' }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 text-white"
+          >
+            Start Your Ceylon Spice Journey
+          </motion.h1>
+
+          {/* Sub-heading — warm amber/gold, clearly visible */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="flex items-center justify-center gap-3"
+          >
+            <div className="w-10 h-px bg-[#D4AF37]" />
+            <p
+              className="text-lg sm:text-xl font-semibold tracking-wide"
+              style={{ color: '#FFD966', textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
+            >
+              Connect with Our Export Team
+            </p>
+            <div className="w-10 h-px bg-[#D4AF37]" />
+          </motion.div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* ── Main Content ── */}
       <section className="py-16 sm:py-20 bg-[#FFF8E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10 xl:gap-14">
@@ -418,26 +456,64 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
               </motion.div>
             </div>
 
-            {/* Right Column */}
+            {/* ── Right Column ── */}
             <div className="lg:col-span-2 flex flex-col gap-6">
 
-              {/* WhatsApp */}
-              <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="rounded-3xl shadow-xl overflow-hidden">
-                <div className="bg-gradient-to-br from-[#25D366] to-[#1da851] p-6 text-white">
+              {/* ── WhatsApp Card — redesigned ── */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="rounded-3xl overflow-hidden shadow-2xl"
+                style={{ background: 'linear-gradient(145deg, #075E54 0%, #128C7E 40%, #25D366 100%)' }}
+              >
+                <div className="p-6 text-white">
+
+                  {/* ── Badge row ── */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="w-2 h-2 bg-[#25D366] rounded-full animate-pulse" />
+                    <span className="text-[#aef5d0] text-[11px] font-bold uppercase tracking-[0.2em]">Instant Support</span>
+                  </div>
+
+                  {/* ── Title row ── */}
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center shrink-0">
-                      <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                    <div className="w-11 h-11 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
+                      <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                      </svg>
                     </div>
-                    <div><h3 className="text-lg font-bold">Chat on WhatsApp</h3><p className="text-white/80 text-xs">Get instant responses</p></div>
+                    <h3 className="text-2xl font-bold text-white leading-tight">Chat on WhatsApp</h3>
                   </div>
-                  <p className="text-sm text-white/90 mb-3 text-justify leading-relaxed">Prefer WhatsApp? Chat directly with our export team for quick inquiries about products, pricing, and availability.</p>
-                  <div className="flex items-center gap-2 mb-4 bg-white/15 rounded-xl px-3 py-2">
+
+                  {/* ── Description ── */}
+                  <p className="text-sm text-white/80 mb-5 leading-relaxed">
+                    Chat directly with our export team for quick inquiries about products, pricing, and availability.
+                  </p>
+
+                  {/* ── Number box ── */}
+                  <div className="bg-white/10 border border-white/20 rounded-2xl px-4 py-3.5 mb-5">
+                    <p className="text-white/60 text-[10px] uppercase tracking-widest font-semibold mb-1.5">WhatsApp Number</p>
+                    <div className="flex items-center gap-2.5">
+                      <WaIcon />
+                      <span className="text-white font-bold text-xl tracking-wide">+94 70 434 2820</span>
+                    </div>
+                  </div>
+
+                  {/* ── CTA Button ── */}
+                  <button
+                    onClick={handleWhatsAppClick}
+                    className="w-full bg-white hover:bg-green-50 active:scale-[0.98] text-[#075E54] py-3.5 rounded-2xl font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2.5"
+                  >
                     <WaIcon />
-                    <span className="text-sm font-bold tracking-wide">Hotline: +94 71 565 5855</span>
-                  </div>
-                  <button onClick={handleWhatsAppClick} className="w-full bg-white hover:bg-gray-50 active:scale-95 text-[#25D366] py-3 rounded-2xl font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
-                    <WaIcon />Start WhatsApp Chat
+                    Start WhatsApp Chat Now
                   </button>
+                </div>
+
+                {/* ── Footer strip ── */}
+                <div className="bg-black/20 px-6 py-2.5 flex items-center justify-center gap-2 border-t border-white/10">
+                  <span className="w-1.5 h-1.5 bg-[#25D366] rounded-full" />
+                  <p className="text-white/70 text-xs font-medium">Available Mon–Sat · 8:00 AM – 5:00 PM (GMT+5:30)</p>
+                  <span className="w-1.5 h-1.5 bg-[#25D366] rounded-full" />
                 </div>
               </motion.div>
 
@@ -466,12 +542,18 @@ export function ContactPage({ onOpenChatbot }: ContactPageProps) {
                   <div className="flex gap-3">
                     <div className="w-9 h-9 bg-amber-50 rounded-xl flex items-center justify-center shrink-0 mt-0.5"><Phone className="w-4 h-4 text-[#D4AF37]" /></div>
                     <div>
+                      {/* Hotline — +94 71 565 5855 (NOT WhatsApp) */}
                       <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mb-1">Hotline</p>
-                      <a href="https://wa.me/94715655855" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#B8860B] transition-colors">
-                        +94 71 565 5855<span className="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded-full font-semibold">WhatsApp</span>
+                      <a href="tel:+94715655855" className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#B8860B] transition-colors">
+                        +94 71 565 5855
+                        <span className="text-[10px] bg-blue-700 text-white px-1.5 py-0.5 rounded-full font-semibold">Hotline</span>
                       </a>
-                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mt-2 mb-1">Phone</p>
-                      <a href="tel:+94704342820" className="block text-[#D4AF37] hover:text-[#B8860B] transition-colors">+94 70 434 2820</a>
+                      {/* WhatsApp — +94 70 434 2820 */}
+                      <p className="font-bold text-[#D4AF37] text-xs uppercase tracking-wider mt-2 mb-1">WhatsApp</p>
+                      <a href="https://wa.me/94704342820" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-[#D4AF37] hover:text-[#B8860B] transition-colors">
+                        +94 70 434 2820
+                        <span className="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded-full font-semibold">WhatsApp</span>
+                      </a>
                     </div>
                   </div>
                   <div className="flex gap-3">
