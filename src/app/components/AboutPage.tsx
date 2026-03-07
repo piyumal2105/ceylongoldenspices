@@ -123,8 +123,9 @@ export function AboutPage({ onNavigate }) {
       label: 'Export Facilities'
     },
     {
-      src: 'https://images.unsplash.com/photo-1578574577315-3fbeb0cecdc2?w=600',
-      label: 'International Certifications'
+      // ✅ CHANGED: Replaced "International Certifications" with a global trade/supply chain image
+      src: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600',
+      label: 'Global Trade Network'
     },
     {
       src: Image04,
@@ -162,12 +163,22 @@ export function AboutPage({ onNavigate }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-4xl md:text-6xl mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+            <h1 className="text-4xl md:text-6xl mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
               The Story Behind Ceylon Golden Spices
             </h1>
-            <p className="text-xl md:text-2xl text-[#D4AF37]">
-              Buddhi Product - Your Trusted Ceylon Spice Partner
-            </p>
+
+            {/* ✅ CHANGED: Highlighted subtitle with gold badge + styled text */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-2">
+              <span
+                className="bg-[#D4AF37] text-[#1a0a00] font-extrabold tracking-widest uppercase text-sm md:text-base px-6 py-2.5 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.6)] ring-2 ring-[#D4AF37]/40"
+                style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.12em' }}
+              >
+                Buddhi Product
+              </span>
+              <span className="text-white/90 text-lg md:text-xl font-light tracking-wide">
+                — Your Trusted Ceylon Spice Partner
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -181,8 +192,9 @@ export function AboutPage({ onNavigate }) {
               <h2 className="text-3xl md:text-4xl mb-6 text-[#7B3F00]" style={{ fontFamily: 'Playfair Display, serif' }}>
                 Our Journey
               </h2>
+              {/* ✅ CHANGED: 25 years → 5 years */}
               <p className="text-gray-700 mb-4 leading-relaxed text-justify">
-                For over 25 years, Buddhi Product has been at the forefront of Ceylon spice exports,
+                For over 5 years, Buddhi Product has been at the forefront of Ceylon spice exports,
                 combining traditional wisdom with modern excellence. Operating through our Buddhi Product brand,
                 we've built a reputation for delivering authentic, premium-quality spices to discerning buyers worldwide.
               </p>
@@ -207,8 +219,9 @@ export function AboutPage({ onNavigate }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 right-6">
+                  {/* ✅ CHANGED: 25 Years → 5 Years */}
                   <p className="text-white text-lg md:text-xl font-semibold" style={{ fontFamily: 'Playfair Display, serif' }}>
-                    Over 25 Years of Ceylon Spice Excellence
+                    Over 5 Years of Ceylon Spice Excellence
                   </p>
                   <p className="text-[#D4AF37] text-sm mt-1">Andiambalama, Sri Lanka</p>
                 </div>
@@ -235,7 +248,6 @@ export function AboutPage({ onNavigate }) {
             viewport={{ once: true }}
             className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl transition-all duration-300 overflow-hidden mb-8"
           >
-            {/* Decorative background image on hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1649853761620-c6588c980545?w=600" alt="" className="w-full h-full object-cover" />
             </div>
@@ -270,7 +282,6 @@ export function AboutPage({ onNavigate }) {
             transition={{ delay: 0.1 }}
             className="group relative bg-white rounded-2xl p-8 md:p-10 shadow-xl border-2 border-[#D4AF37] hover:shadow-2xl transition-all duration-300 overflow-hidden"
           >
-            {/* Decorative background image on hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl overflow-hidden">
               <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600" alt="" className="w-full h-full object-cover" />
             </div>
@@ -337,7 +348,6 @@ export function AboutPage({ onNavigate }) {
                   viewport={{ once: true }}
                   className="group relative bg-[#FFF8E7] rounded-xl p-6 hover:shadow-xl transition-all overflow-hidden"
                 >
-                  {/* Background Image on Hover */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500">
                     <img src={value.image} alt="" className="w-full h-full object-cover" />
                   </div>
@@ -389,7 +399,7 @@ export function AboutPage({ onNavigate }) {
               ))}
             </div>
 
-            {/* Image Grid — 2 cols × 3 rows, stretches to match left column */}
+            {/* Image Grid — 2 cols × 3 rows */}
             <div className="grid grid-cols-2 gap-3 h-full" style={{ gridTemplateRows: 'repeat(3, 1fr)', minHeight: '480px' }}>
               {tradeImages.map((img, index) => (
                 <motion.div
@@ -416,7 +426,7 @@ export function AboutPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* Partner With Us CTA — last section, no bottom margin */}
+      {/* Partner With Us CTA */}
       <section className="py-16 md:py-20 bg-[#FFF8E7] [&+*]:mt-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-5xl mb-6 text-[#7B3F00]" style={{ fontFamily: 'Playfair Display, serif' }}>
