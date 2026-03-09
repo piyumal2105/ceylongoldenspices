@@ -5,6 +5,7 @@ import Image01 from "../components/assets/Aboutus/image00.jpg"
 import Image02 from "../components/assets/Global/logo01.jpeg"
 import Image03 from "../components/assets/Global/logo02.jpeg"
 import Image04 from "../components/assets/Aboutus/image01.jpg"
+import Image05 from "../components/assets/Global/image01.png"
 
 export function AboutPage({ onNavigate }) {
   const values = [
@@ -128,7 +129,7 @@ export function AboutPage({ onNavigate }) {
       label: 'Global Trade Network'
     },
     {
-      src: Image04,
+      src: Image05,
       label: 'Professional Packaging'
     },
     {

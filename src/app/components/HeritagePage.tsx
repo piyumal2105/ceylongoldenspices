@@ -12,7 +12,7 @@ import Image02 from "../components/assets/Heritage/image01.jpg";
 import Image03 from "../components/assets/Heritage/image02.jpg";
 import Image04 from "../components/assets/Heritage/image03.jpg";
 import Image05 from "../components/assets/Heritage/image04.jpg";
-import Image06 from "../components/assets/Heritage/image05.jpg";
+import Image06 from "../components/assets/Global/image01.png"
 import Image07 from "../components/assets/Heritage/image06.jpg";
 
 function ImageSlider({ images, autoPlayInterval = 4000 }) {

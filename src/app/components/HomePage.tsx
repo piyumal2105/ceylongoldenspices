@@ -16,6 +16,7 @@ import Image10 from "../components/assets/Home/image10.jpg";
 import Image11 from "../components/assets/Home/image11.png";
 import Image12 from "../components/assets/Home/image12.jpg";
 import Image13 from "../components/assets/Home/image13.png";
+import Image14 from "../components/assets/Global/image01.png"
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -114,7 +115,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       description: 'Rigorous Quality Inspection And Grading'
     },
     {
-      image: { src: Image10, alt: 'Export packaging of Ceylon spices ready for global markets' },
+      image: { src: Image14, alt: 'Export packaging of Ceylon spices ready for global markets' },
       title: 'Export Ready',
       description: 'Premium Packaging For Global Markets'
     }
