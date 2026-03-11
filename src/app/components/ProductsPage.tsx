@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Search, Filter, X, MapPin, Leaf, Clock, ShieldCheck, Thermometer, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+
 import Product01 from "../components/assets/Products/1.png";
 import Product02 from "../components/assets/Products/2.png";
 import Product03 from "../components/assets/Products/3.png";
