@@ -14,6 +14,8 @@ import Image04 from "../components/assets/Heritage/image03.jpg";
 import Image05 from "../components/assets/Heritage/image04.jpg";
 import Image06 from "../components/assets/Global/image01.png"
 import Image07 from "../components/assets/Heritage/image06.jpg";
+import Image08 from "../components/assets/Heritage/image07.webp";
+import Image09 from "../components/assets/Heritage/image08.jpg";
 
 function ImageSlider({ images, autoPlayInterval = 4000 }) {
   const [current, setCurrent] = useState(0);
@@ -121,7 +123,7 @@ export function HeritagePage() {
       caption: 'Hand Rolled Ceylon Cinnamon Quills'
     },
     {
-      src: Image03,
+      src: Image08,
       alt: 'Spice harvesting',
       caption: 'Traditional Harvest Methods'
     },
@@ -131,7 +133,7 @@ export function HeritagePage() {
       caption: 'Sri Lankan Tea Plantations'
     },
     {
-      src: Image05,
+      src: Image09,
       alt: 'Spice processing',
       caption: 'Meticulous Quality Processing'
     },

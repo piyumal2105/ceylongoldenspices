@@ -17,6 +17,10 @@ import Image11 from "../components/assets/Home/image11.png";
 import Image12 from "../components/assets/Home/image12.jpg";
 import Image13 from "../components/assets/Home/image13.png";
 import Image14 from "../components/assets/Global/image01.png"
+import Image15 from "../components/assets/Home/image14.jpg";
+import Image16 from "../components/assets/Home/image15.webp";
+import Image17 from "../components/assets/Home/image16.jpg";
+import Image18 from "../components/assets/Home/image17.jpg";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -95,22 +99,22 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   const carouselSlides = [
     {
-      image: { src: Image06, alt: 'Spice cultivation in traditional Ceylon gardens' },
+      image: { src: Image15, alt: 'Spice cultivation in traditional Ceylon gardens' },
       title: 'Cultivation',
       description: 'Spice Cultivation In Traditional Ceylon Gardens'
     },
     {
-      image: { src: Image07, alt: 'Harvesting spices in Ceylon' },
+      image: { src: Image16, alt: 'Harvesting spices in Ceylon' },
       title: 'Harvesting',
       description: 'Hand Picking Premium Quality Spices'
     },
     {
-      image: { src: Image08, alt: 'Traditional drying and processing of spices in Ceylon' },
+      image: { src: Image17, alt: 'Traditional drying and processing of spices in Ceylon' },
       title: 'Processing',
       description: 'Traditional Drying And Processing Methods'
     },
     {
-      image: { src: Image09, alt: 'Quality control and grading of Ceylon spices' },
+      image: { src: Image18, alt: 'Quality control and grading of Ceylon spices' },
       title: 'Quality Control',
       description: 'Rigorous Quality Inspection And Grading'
     },
@@ -129,7 +133,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
       icon: Leaf
     },
     {
-      // ✅ CHANGED: Replaced "Export Quality Standards" (ISO/HACCP) with "Direct Farmer Partnerships"
       title: 'Direct Farmer Partnerships',
       description: 'We work hand-in-hand with local Sri Lankan farmers and estates, ensuring fair practices, fresh harvests, and full control over product quality from the source.',
       video: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800',
