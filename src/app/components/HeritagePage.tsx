@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Award, Sun, Layers, Clock, ShieldCheck, ChevronLeft, ChevronRight, Leaf, Wind, Star } from 'lucide-react';
+import { Award, Sun, Layers, Clock, ShieldCheck, ChevronLeft, ChevronRight, Leaf, Wind, Star, MapPin } from 'lucide-react';
 
 import Image01 from "../components/assets/Heritage/image00.png";
 import Image02 from "../components/assets/Heritage/image01.jpg";
@@ -9,8 +9,15 @@ import Image06 from "../components/assets/Global/image01.png";
 import Image07 from "../components/assets/Heritage/image06.jpg";
 import Image08 from "../components/assets/Heritage/image07.webp";
 import Image09 from "../components/assets/Heritage/image08.jpg";
-// @ts-ignore
+
 import Video01 from "../components/assets/Heritage/video01.MOV";
+
+import Image10 from "../components/assets/Heritage/image14.jpeg";
+import Image11 from "../components/assets/Heritage/image09.jpeg";
+import Image12 from "../components/assets/Heritage/image10.jpeg";
+import Image13 from "../components/assets/Heritage/image11.jpeg";
+import Image14 from "../components/assets/Heritage/image12.jpeg";
+import Image15 from "../components/assets/Heritage/image13.jpeg";
 
 interface SliderImage {
   src: string;
@@ -66,6 +73,138 @@ function ImageSlider({ images, autoPlayInterval = 4000 }: { images: SliderImage[
   );
 }
 
+function CinematicSlider({ images }: { images: SliderImage[] }) {
+  const [current, setCurrent] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = (index: number) => {
+    if (isAnimating || index === current) return;
+    setIsAnimating(true);
+    setCurrent(index);
+    setTimeout(() => setIsAnimating(false), 700);
+  };
+
+  const prev = () => goTo((current - 1 + images.length) % images.length);
+  const next = () => goTo((current + 1) % images.length);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % images.length);
+    }, 5000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [images.length]);
+
+  const resetTimer = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % images.length);
+    }, 5000);
+  };
+
+  return (
+    <div className="relative w-full">
+      {/* Main slide */}
+      <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16/7' }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="absolute inset-0"
+          >
+            <img
+              src={images[current].src}
+              alt={images[current].alt}
+              className="w-full h-full object-cover"
+            />
+            {/* Cinematic letterbox gradient */}
+            <div className="absolute inset-0" style={{
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 25%, transparent 60%, rgba(0,0,0,0.65) 100%)'
+            }} />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Caption overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex items-end justify-between"
+            >
+              <div>
+                <p className="text-[#D4AF37] text-xs uppercase tracking-[0.3em] mb-1 font-sans">
+                  {String(current + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+                </p>
+                <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-lg" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  {images[current].caption}
+                </h3>
+              </div>
+              {/* Nav arrows */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => { prev(); resetTimer(); }}
+                  aria-label="Previous"
+                  className="w-11 h-11 rounded-full border border-white/40 bg-white/10 hover:bg-[#D4AF37] hover:border-[#D4AF37] backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => { next(); resetTimer(); }}
+                  aria-label="Next"
+                  className="w-11 h-11 rounded-full border border-white/40 bg-white/10 hover:bg-[#D4AF37] hover:border-[#D4AF37] backdrop-blur-sm text-white flex items-center justify-center transition-all duration-300"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Progress bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white/20">
+          <motion.div
+            key={current}
+            className="h-full bg-[#D4AF37]"
+            initial={{ width: '0%' }}
+            animate={{ width: '100%' }}
+            transition={{ duration: 5, ease: 'linear' }}
+          />
+        </div>
+      </div>
+
+      {/* Thumbnail strip — no scroll, evenly distributed */}
+      <div className="bg-[#0f0a04] px-4 md:px-10 py-4">
+        <div className="flex gap-2 justify-center flex-wrap">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => { goTo(i); resetTimer(); }}
+              aria-label={`View ${img.caption}`}
+              className={`relative overflow-hidden transition-all duration-300 rounded-lg ${i === current
+                ? 'ring-2 ring-[#D4AF37] opacity-100 scale-105'
+                : 'opacity-50 hover:opacity-80 scale-100'
+                }`}
+              style={{ width: 'clamp(80px, 13vw, 130px)', aspectRatio: '16/9' }}
+            >
+              <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+              {i === current && (
+                <div className="absolute inset-0 bg-[#D4AF37]/10" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function HeritagePage() {
 
   const geographicAdvantages = [
@@ -83,9 +222,19 @@ export function HeritagePage() {
     { src: Image06, alt: 'Ceylon spice quality', caption: 'Export Grade Premium Quality' },
   ];
 
+  const showcaseImages: SliderImage[] = [
+    { src: Image10, alt: 'Sri Lankan highland spice plantation at golden sunrise', caption: 'The Highlands of Ceylon — Where Spices Are Born' },
+    { src: Image11, alt: 'Spices displayed with Sigiriya Rock Fortress in background', caption: 'Ancient Land, Ancient Spices — Sigiriya & Beyond' },
+    { src: Image12, alt: 'Vibrant spice market with terracotta bowls and lanterns', caption: 'The Spice Bazaar — A Thousand Years of Trade' },
+    { src: Image13, alt: 'Close-up of colourful spice market bowls at dusk', caption: 'Colour, Aroma & Heritage in Every Bowl' },
+    { src: Image14, alt: 'Flat lay of Ceylon spices with white flowers and leaves', caption: 'Nature\'s Finest — Pure Ceylon Spice Collection' },
+    { src: Image15, alt: 'Cinnamon sticks and cardamom with aromatic smoke', caption: 'The Essence of Ceylon — Cinnamon, Pepper & Cardamom' },
+  ];
+
   return (
     <div className="min-h-screen pt-20" style={{ fontFamily: "'Georgia', serif" }}>
 
+      {/* ── Hero ── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={Image01} alt="Ancient Ceylon spice heritage" className="w-full h-full object-cover object-top" />
@@ -113,6 +262,7 @@ export function HeritagePage() {
         </div>
       </section>
 
+      {/* ── Heritage Story + Video ── */}
       <section id="heritage-story" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -132,6 +282,7 @@ export function HeritagePage() {
         </div>
       </section>
 
+      {/* ── Geographic Advantage ── */}
       <section className="py-20 bg-[#FFF8E7]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -175,6 +326,28 @@ export function HeritagePage() {
         </div>
       </section>
 
+      <section className="bg-[#0f0a04]">
+        <div className="text-center pt-16 pb-10 px-4">
+          <p className="text-[#D4AF37]/70 text-sm uppercase tracking-[0.3em] mb-3 font-sans">Visual Journey</p>
+          <h2 className="text-4xl md:text-5xl text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+            The Island of Spices
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto font-sans">
+            From misty highland plantations to ancient trade bazaars — a visual odyssey through Ceylon's spice heritage.
+          </p>
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <CinematicSlider images={showcaseImages} />
+        </motion.div>
+        <div className="pb-16" />
+      </section>
+
+      {/* ── The Ceylon Difference ── */}
       <section className="py-20 bg-[#0A2647] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -216,6 +389,7 @@ export function HeritagePage() {
         </div>
       </section>
 
+      {/* ── Certifications ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">

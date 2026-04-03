@@ -97,7 +97,6 @@ interface FormData {
 
 interface ContactPageProps { onOpenChatbot?: () => void; }
 
-// ─── Defined OUTSIDE ContactPage to prevent focus loss on re-render ───
 const FieldWrapper = ({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) => (
   <div>
     <label className="block text-sm font-semibold text-[#7B3F00] mb-1.5">{label}</label>
@@ -108,7 +107,6 @@ const FieldWrapper = ({ label, error, children }: { label: string; error?: strin
 
 const inputClass = (field: keyof FormData, errors: Partial<Record<keyof FormData, string>>) =>
   `w-full py-3 px-4 border-2 rounded-xl transition-colors focus:outline-none focus:border-[#D4AF37] text-gray-800 text-sm ${errors[field] ? 'border-red-400 bg-red-50' : 'border-gray-200 bg-white hover:border-gray-300'}`;
-// ─────────────────────────────────────────────────────────────────────
 
 const SpicePattern = () => (
   <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
